@@ -1,29 +1,51 @@
-%nav.navbar.navbar-expand-lg.navbar-dark.bg-success
-  %a.navbar-brand{:href => "/"}
-    .text-light
-      %b 
-        .fa.fa-graduation-cap
-        E-LEARNING
-  - if current_user
-    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+%nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+  .container-fluid
+    %a.navbar-brand{:href => "/"} E-LEARN
+    %button.navbar-toggler{"aria-controls" => "navbarScroll", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarScroll", "data-bs-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
-    #navbarSupportedContent.collapse.navbar-collapse
-      %ul.navbar-nav.mr-auto
+    #navbarScroll.collapse.navbar-collapse
+      - if current_user
+        %ul.navbar-nav.me-auto.my-2.my-lg-0.navbar-nav-scroll{:style => "--bs-scroll-height: 100px;"}
+          %li.nav-item{class: "#{'active font-weight-bold' if current_page?(root_path)}"}
+            = link_to root_path, class: 'nav-link' do
+              .fa.fa-home 
+              Home
 
-        %li.nav-item
-          = link_to root_path, class: 'nav-link' do
-            .fa.fa-bookmark
-            %b Home
+          %li.nav-item{class: "#{'active font-weight-bold' if current_page?(courses_path)}"}
+            = link_to courses_path, class: 'nav-link' do
+              .fa.fa-home 
+              Courses
 
-        %li.nav-item
-          = link_to courses_path, class: 'nav-link' do
-            .fa.fa-bookmark
-            %b Courses
+          %li.nav-item{class: "#{'active font-weight-bold' if current_page?(new_course_path)}"}
+            = link_to new_course_path, class: 'nav-link' do
+              .fa.fa-home 
+              New Course
 
-        %li.nav-item
-          = link_to new_course_path, class: 'nav-link' do
-            .fa.fa-bookmark
-            %b New Course
+          %li.nav-item{class: "#{'active font-weight-bold' if current_page?(users_path)}"}
+            = link_to users_path, class: 'nav-link' do
+              .fa.fa-home 
+              Users
+
+          %li.nav-item.dropdown
+            %a#navbarScrollingDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
+              My Account
+            %ul.dropdown-menu{"aria-labelledby" => "navbarScrollingDropdown"}
+              %li
+                = link_to user_path(current_user), class: 'dropdown-item' do
+                  .fa.fa-home 
+                  My Profile
+
+              %li
+                = link_to edit_user_registration_path, class: 'dropdown-item' do
+                  .fa.fa-home 
+                  Account Settings
+                
+              %li
+                %hr.dropdown-divider/
+              %li
+                = link_to destroy_user_session_path, method: :delete, class: 'dropdown-item' do
+                  .fa.fa-home 
+                  Logout
 
         .form-inline.my-2.my-lg-0
           = form_tag(courses_path, method: :get) do
@@ -32,20 +54,7 @@
               %span.input-group-append
                 %button.btn.btn-primary.btn-sm{:type => "submit"}
                   %span.fa.fa-search{"aria-hidden" => "true"}
-
-      %ul.navbar-nav.mr-right
-        .nav-item.dropdown
-          %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-            .fa.fa-user
-            %b= current_user.email
-          .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "navbarDropdown"}
-            = link_to edit_user_registration_path, class: "dropdown-item" do
-              .fa.fa-cog
-              %b Account settings
-            = link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do
-              .fa.fa-sign-out-alt
-              %b Sign out
-  - else
-    %ul.navbar-nav.mr-auto.navbar-right
-    .nav-link= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-outline-dark'
-    .nav-link= link_to 'Log In', new_user_session_path, class: 'btn btn-outline-dark'
+      - else
+        %ul.navbar-nav.mr-auto.navbar-right
+          .nav-link= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-outline-dark'
+          .nav-link= link_to 'Log In', new_user_session_path, class: 'btn btn-outline-dark'
