@@ -3,10 +3,17 @@
         .card-header
             = link_to course.title, course_path(course)
         .card-body
-            = course.description
+            %small= simple_format(course.short_description)
+        .card-footer 
+            .fa.fa-globe-africa
+            = course.language
+            .fa.fa-signal
+            = course.level
+        .card-footer
+            = number_to_currency(course.price)
         .card.footer 
             = course.created_at
-            = course.user
+            = course.user.username
         .card-footer
             = link_to 'Show', course, class: 'btn btn-sm btn-primary'
             = link_to 'Edit', edit_course_path(course), class: 'btn btn-sm btn-warning'
