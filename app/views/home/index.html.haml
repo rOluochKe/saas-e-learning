@@ -1,2 +1,63 @@
-%h1.btn.btn-success hello home now
-.fab.fa-github text
+.bg-light.p-5
+  .display-4.pt-5.pb-5
+    What do you want to learn?
+
+  .form-inline.my-2.my-lg-0
+    = form_tag(courses_path, method: :get) do
+      .input-group
+        = text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "Find a course", class: 'form-control-sm'
+        %span.input-group-append
+          %button.btn.btn-primary.btn-sm{:type => "submit"}
+            %span.fa.fa-search{"aria-hidden" => "true"}
+
+.card-group.mt-3.mb-3
+  .card.card-body
+    %h1
+      .fa.fa-graduation-cap
+    online courses
+    .row
+    Explore a variety of fresh topics
+  .card.card-body
+    %h1
+      .fa.fa-chalkboard-teacher
+    expert instructors
+    .row
+    Find the right instructor for you
+  .card.card-body
+    %h1
+      .fa.fa-user-graduate
+    = User.count
+    active learners
+    .row
+    Join the knowledge sharing community
+  .card.card-body
+    %h1
+      .fa.fa-infinity
+    Lifetime access
+    .row
+    Learn on your schedule
+
+
+%h2.mt-4
+  Popular Courses  
+.row
+  - @courses.each do |course|
+    = render 'courses/course', course: course
+
+%hr
+
+%h2.mt-4
+  Top Rated Courses
+.row
+  - @courses.each do |course|
+    = render 'courses/course', course: course
+
+%hr
+
+%h2.mt-4
+  Latest Courses
+.row
+  - @latest_courses.each do |course|
+    = render 'courses/course', course: course
+
+%hr

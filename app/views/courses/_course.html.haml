@@ -1,0 +1,13 @@
+.col-md-4    
+    .card.p-3.m-3
+        .card-header
+            = link_to course.title, course_path(course)
+        .card-body
+            = course.description
+        .card.footer 
+            = course.created_at
+            = course.user
+        .card-footer
+            = link_to 'Show', course, class: 'btn btn-sm btn-primary'
+            = link_to 'Edit', edit_course_path(course), class: 'btn btn-sm btn-warning'
+            = link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'

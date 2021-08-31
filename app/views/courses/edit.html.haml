@@ -1,7 +1,8 @@
-%h1 Editing course
-
-= render 'form'
-
-= link_to 'Show', @course
-\|
-= link_to 'Back', courses_path
+.card.mt-4
+    .card-header 
+        %h1 Editing course
+    .card-body
+        = render 'form'
+    .card-footer
+        = link_to 'Show', @course, class: 'btn btn-success'
+        = link_to 'Courses', courses_path, class: 'btn btn-primary'
