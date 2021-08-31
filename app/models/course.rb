@@ -23,6 +23,10 @@ class Course < ApplicationRecord
     LEVELS.map { |level| [level, level] }
   end
 
+  include PublicActivity::Model
+  # tracked
+  tracked owner: proc { |controller, _model| controller.current_user }
+
   # friendly_id :generated_slug, use: :slugged
 
   # def generated_slug

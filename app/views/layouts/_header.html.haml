@@ -26,6 +26,11 @@
               .fa.fa-home 
               Users
 
+          %li.nav-item{class: "#{'active font-weight-bold' if current_page?(home_activity_path)}"}
+            = link_to home_activity_path, class: 'nav-link' do
+              .fa.fa-home 
+              Activities
+
           %li.nav-item.dropdown
             %a#navbarScrollingDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
               My Account

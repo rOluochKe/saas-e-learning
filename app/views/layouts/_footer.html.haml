@@ -1,0 +1,17 @@
+%footer
+    .container 
+        .row.mb-4 
+            .col-md-4 
+                Copyright @ = Time.now.year E-LEARN
+                .row 
+                .fa.fa-envolope 
+                = mail_to 'demo.oluoch@gmail.com'
+                .row 
+            .col-md-4 
+                Privacy Policy
+                .row 
+                Terms and Conditions
+            .col-md-4 
+                About Us
+                .row 
+                = link_to "E-LEARN", new_course_path
