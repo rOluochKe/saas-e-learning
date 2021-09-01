@@ -28,3 +28,8 @@
                 .badge.badge-success.text-success Yes
             - else
                 .badge.badge-danger.text-danger No
+        .card-footer
+            - user.roles.each do |role|
+                = role.name
+            - if policy(user).edit?
+                = link_to 'Edit Roles', edit_user_path(user), class: 'btn btn-sm btn-warning'
