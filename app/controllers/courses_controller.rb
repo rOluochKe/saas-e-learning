@@ -15,7 +15,9 @@ class CoursesController < ApplicationController
     @courses = @ransack_courses.result.includes(:user)
   end
 
-  def show; end
+  def show
+    @lessons = @course.lessons
+  end
 
   def new
     @course = Course.new
