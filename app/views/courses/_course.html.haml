@@ -15,7 +15,7 @@
         = course.lessons.count
     .card.footer 
         = course.created_at
-        = course.user.username
+        = link_to course.user.username, user_path(course.user)
     - if current_user
         - if policy(course).edit?
             .card-footer

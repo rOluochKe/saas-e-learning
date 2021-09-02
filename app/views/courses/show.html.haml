@@ -8,6 +8,6 @@
         = render 'courses/course', course: @course
 
     .col-md-8
-        = link_to 'Add New Lesson', new_lesson_path(course_id: @course.id), class: 'btn btn-outline-primary mb-3'
+        = link_to 'Add New Lesson', new_course_lesson_path(@course, @lesson), class: 'btn btn-outline-primary mb-3'
         - @lessons.each do |lesson|
             = render 'lessons/lesson', lesson: lesson
