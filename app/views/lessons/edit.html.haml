@@ -1,3 +1,13 @@
+%p
+= link_to 'Courses', course_path
+\/
+= link_to @lesson.course.title, course_path(@lesson.course)
+\/
+= link_to @lesson.title, course_lesson_path(@course, @lesson)
+\/
+Edit
+%p
+
 .card.m-4 
     .card-header 
         %h1 Editing lesson
