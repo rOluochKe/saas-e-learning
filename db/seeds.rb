@@ -16,6 +16,8 @@ user = User.new(
 user.skip_confirmation!
 user.save!
 
+PublicActivity.enabled = false
+
 30.times do
     Course.create!([{
       title: Faker::Educator.course_name,
@@ -27,3 +29,5 @@ user.save!
       price: Faker::Number.between(from: 1000, to: 2000)
     }])
   end
+
+  PublicActivity.enabled = true
