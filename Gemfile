@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
+gem 'exception_notification'
 gem 'faker'
 gem 'friendly_id', '~> 5.4.0'
 gem 'haml-rails', '~> 2.0'
